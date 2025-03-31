@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   base: '/pdfreader/',
   optimizeDeps: {
-    include: ['pdfjs-dist/build/pdf.worker.entry', 'react', 'react-dom']
+    include: ['react', 'react-dom']
   },
   build: {
     commonjsOptions: {
-      include: [/pdfjs-dist/, /react/, /react-dom/]
+      include: [/react/, /react-dom/]
     }
   }
 }) 
