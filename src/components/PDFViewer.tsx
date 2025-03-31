@@ -2,22 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { GlobalWorkerOptions } from 'pdfjs-dist';
 
-// Declare the types we need
-interface PDFDocumentProxy {
-  numPages: number;
-  getPage: (pageNumber: number) => Promise<PDFPageProxy>;
-}
-
-interface PDFPageProxy {
-  getViewport: (params: { scale: number }) => PDFPageViewport;
-  render: (params: any) => { promise: Promise<void> };
-}
-
-interface PDFPageViewport {
-  width: number;
-  height: number;
-}
-
 // Initialize PDF.js worker
 GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
