@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/pdfreader/',
   optimizeDeps: {
-    include: ['react', 'react-dom', 'pdfjs-dist']
+    include: ['react', 'react-dom']
   },
   build: {
     commonjsOptions: {
@@ -15,7 +15,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      'pdfjs-dist': 'pdfjs-dist/esm/build/pdf.js'
+      'pdfjs-dist': 'pdfjs-dist/legacy/build/pdf.js'
     }
   }
 }) 
