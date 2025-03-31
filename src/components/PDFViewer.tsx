@@ -1,9 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
-import * as pdfjsLib from 'pdfjs-dist';
-import { GlobalWorkerOptions } from 'pdfjs-dist';
+
+// Declare the types we need
+interface PDFDocumentProxy {
+  numPages: number;
+  getPage: (pageNumber: number) => Promise<PDFPageProxy>;
+}
+
+interface PDFPageProxy {
+  getViewport: (params: { scale: number }) => PDFPageViewport;
+  render: (params: any) => { promise: Promise<void> };
+}
+
+interface PDFPageViewport {
+  width: number;
+  height: number;
+}
 
 // Initialize PDF.js worker
-GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
+const pdfjsLib = (window as any).pdfjsLib;
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
 
 interface PDFViewerProps {
   url: string;
@@ -17,7 +32,7 @@ export const PDFViewer: React.FC<PDFViewerProps> = ({
   lineColor = '#000000' // Default black
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [pdf, setPdf] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
+  const [pdf, setPdf] = useState<PDFDocumentProxy | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [numPages, setNumPages] = useState(0);
   const [isProjectorMode, setIsProjectorMode] = useState(false);
