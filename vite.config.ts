@@ -10,14 +10,12 @@ export default defineConfig({
   },
   build: {
     commonjsOptions: {
-      include: [/react/, /react-dom/, /node_modules\/pdfjs-dist/]
-    },
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          pdfjs: ['pdfjs-dist']
-        }
-      }
+      include: [/react/, /react-dom/, /pdfjs-dist/]
+    }
+  },
+  resolve: {
+    alias: {
+      'pdfjs-dist': 'pdfjs-dist/esm/build/pdf.js'
     }
   }
 }) 
