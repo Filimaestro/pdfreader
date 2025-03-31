@@ -3,7 +3,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 import { GlobalWorkerOptions } from 'pdfjs-dist';
 
 // Initialize PDF.js worker
-GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
 
 interface PDFViewerProps {
   url: string;
