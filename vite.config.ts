@@ -10,7 +10,13 @@ export default defineConfig({
   },
   build: {
     commonjsOptions: {
-      include: [/react/, /react-dom/, /pdfjs-dist/]
+      include: [/react/, /react-dom/, /pdfjs-dist/],
+      transformMixedEsModules: true
+    }
+  },
+  resolve: {
+    alias: {
+      'pdfjs-dist': 'pdfjs-dist/build/pdf'
     }
   }
 }) 
