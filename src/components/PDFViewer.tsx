@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
-
-// Initialize PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+import '../lib/pdfjs-worker';
 
 interface PDFViewerProps {
   url: string;
@@ -54,6 +52,8 @@ export const PDFViewer: React.FC<PDFViewerProps> = ({
 
   useEffect(() => {
     const loadPDF = async () => {
+      if (!url) return;
+      
       try {
         const loadingTask = pdfjsLib.getDocument(url);
         const pdf = await loadingTask.promise;
