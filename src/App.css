@@ -35,11 +35,69 @@
   cursor: pointer;
 }
 
+.file-upload {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.file-label:hover {
+  background-color: #0056b3;
+}
+
 .viewer-container {
   flex: 1;
   overflow: hidden;
   padding: 1rem;
   background-color: #e0e0e0;
+}
+
+.upload-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+}
+
+.upload-prompt p {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.upload-hint {
+  font-size: 0.9rem;
+  color: #666;
 }
 
 .pdf-viewer {
@@ -49,6 +107,13 @@
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pdf-viewer.projector-mode {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .pdf-container {
@@ -59,6 +124,11 @@
   padding: 1rem;
 }
 
+.projector-mode .pdf-container {
+  padding: 0;
+  overflow: hidden;
+}
+
 .controls {
   padding: 0.5rem;
   display: flex;
@@ -66,6 +136,21 @@
   gap: 1rem;
   background-color: #f8f8f8;
   border-bottom: 1px solid #e0e0e0;
+  transition: opacity 0.3s ease;
+}
+
+.projector-mode-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.projector-mode-btn:hover {
+  background-color: #218838;
 }
 
 .controls button {
